@@ -5,6 +5,7 @@ import {UserContext} from '../contexts/UserContext';
 
 import HomeIcon from '../assets/home.svg';
 import BackIcon from '../assets/left.svg';
+import HouseIcon from '../assets/house.svg';
 import PersonIcon from '../assets/person.svg';
 import SearchIcon from '../assets/search.svg';
 import TodayIcon from '../assets/today.svg';
@@ -12,8 +13,8 @@ import FavoriteIcon from '../assets/favorite.svg';
 import AccountIcon from '../assets/account.svg';
 
 const TabArea = styled.View`
-  height: 60px;
-  background-color: #4eadbe;
+  height: 55px;
+  background-color: #0275d8;
   flex-direction: row;
 `;
 const TabItem = styled.TouchableOpacity`
@@ -46,7 +47,7 @@ export default ({state, navigation}) => {
   return (
     <TabArea>
       <TabItem onPress={() => navigation.push('Escolha')}>
-        <BackIcon
+        <HouseIcon
           style={{opacity: state.index === 0 ? 1 : 0.5}}
           width="24"
           height="24"
