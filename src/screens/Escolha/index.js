@@ -5,7 +5,8 @@ import {useNavigation} from '@react-navigation/native';
 import {
   Container,
   Cardmoto,
-  Cardcarro
+  Cardcarro,
+  ContainerAreaCitizen,
 } from './styles';
 
 import {
@@ -15,12 +16,16 @@ import {
   Button,
   Alert,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
 import LogoPrefeitura from '../../assets/logo.svg';
 import Moto from '../../assets/moto.svg';
 import Carro from '../../assets/carro.svg';
+import People from '../../assets/person2.svg';
+import Server from '../../assets/file-earmark-person.svg';
+import ButtonIcon from '../../components/ButtonIcon';
+import ButtonIconServ from '../../components/ButtonIconServ';
 
 export default () => {
   const navigation = useNavigation();
@@ -30,28 +35,14 @@ export default () => {
       <LogoPrefeitura
         style={{zIndex: -1, position: 'absolute', opacity: 0.3}}
       />
-
-      <Cardcarro
-      onPress={()=>{
-        navigation.push('MotoTab');
-      }}
-      >
-        <Carro
-          style={{ width: '100%', height: 150}}
+      <ContainerAreaCitizen>
+        <ButtonIcon
+        IconSvg={People}
         />
-      </Cardcarro>
-      
-      <Cardmoto>
-      <Moto
-        style={{ width: '100%', height: 150}}
-      />
-      </Cardmoto>
-      
-      <Cardcarro>
-      <Carro
-        style={{ width: '100%', height: 150}}
-      />
-      </Cardcarro>
+        <ButtonIconServ
+        IconSvg={Server}
+        />
+      </ContainerAreaCitizen>
     </Container>
     </ScrollView>
   );

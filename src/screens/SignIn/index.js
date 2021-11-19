@@ -8,12 +8,18 @@ import {UserContext} from '../../contexts/UserContext';
 
 import {
   Container,
+  ContainerArea,
   InputArea,
   CustomButton,
+  CitizenButton,
   CustomButtonText,
   SignMessageButton,
+  SignMessageButtonCinza,
   SignMessageButtomText,
   SignMessageButtonTextBold,
+  CustomButtonCinza,
+  TextTitle,
+  ContainerAreaCitizen,
 } from './styles';
 
 const styles = StyleSheet.create({
@@ -26,9 +32,13 @@ const styles = StyleSheet.create({
 
 import Api from '../../Api';
 import SignInput from '../../components/SignInput';
+import ButtonIcon from '../../components/ButtonIcon';
+import ButtonIconServ from '../../components/ButtonIconServ';
 
 import LogoPrefeitura from '../../assets/logo.svg';
 import EmailIcon from '../../assets/email.svg';
+import People from '../../assets/person2.svg';
+import Server from '../../assets/file-earmark-person.svg';
 import LockIcon from '../../assets/lock.svg';
 
 export default () => {
@@ -53,10 +63,17 @@ export default () => {
             name: json.data.name,
           },
         });
-
-        navigation.reset({
-          routes: [{name: 'Escolha'}],
-        });
+        console.log(json.data.permission);
+        if (json.data.permission == 1) {
+          navigation.reset({
+            routes: [{name: 'MotoTab'}],
+          });
+        }else{
+            navigation.reset({
+            routes: [{name: 'Escolha'}],
+          });
+        }
+        
       } else {
         Alert.alert('Mensagem', 'E-mail e/ou senha errados', [
           {
@@ -87,7 +104,17 @@ export default () => {
 
   return (
     <Container>
-      <LogoPrefeitura width="100%" height="160" />
+      {/* <LogoPrefeitura width="100%" height="160" /> */}
+    <ContainerArea>
+    <ContainerAreaCitizen>
+    <ButtonIcon
+      IconSvg={People}
+    />
+    <ButtonIconServ
+      IconSvg={Server}
+    />
+    </ContainerAreaCitizen>
+    <TextTitle>Acesso de Cidadão</TextTitle>
       <InputArea>
         <SignInput
           IconSvg={EmailIcon}
@@ -103,15 +130,16 @@ export default () => {
           password={true}
         />
         <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>LOGIN</CustomButtonText>
+          <CustomButtonText>ENTRAR</CustomButtonText>
         </CustomButton>
-        <CustomButton>
+        <CustomButtonCinza>
           <CustomButtonText>REGISTRAR-SE</CustomButtonText>
-        </CustomButton>
-        <CustomButton>
+        </CustomButtonCinza>
+        <CustomButtonCinza>
           <CustomButtonText>ENTRAR COMO VISITANTE</CustomButtonText>
-        </CustomButton>
+        </CustomButtonCinza>
       </InputArea>
+    </ContainerArea>
     </Container>
   );
 };

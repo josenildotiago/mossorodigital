@@ -20,3 +20,9 @@ export const Cardcarro = styled.TouchableOpacity`
     margin: 10px;
     borderRadius: 5px;
 `;
+export const ContainerAreaCitizen = styled.SafeAreaView `
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;

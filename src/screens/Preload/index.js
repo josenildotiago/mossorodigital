@@ -26,9 +26,18 @@ export default () => {
                 },
                 });
                 // console.log(res);
-                navigation.reset({
-                routes: [{name: 'Escolha'}],
-                });
+                if(res.data.permission == 1){
+                    navigation.reset({
+                        routes: [{name: 'MotoTab'}],
+                    });
+                }else{
+                    navigation.reset({
+                        routes: [{name: 'Escolha'}],
+                    });
+                }
+                // navigation.reset({
+                // routes: [{name: 'MotoTab'}],
+                // });
             } else {
                 navigation.navigate('SignIn');
             }
